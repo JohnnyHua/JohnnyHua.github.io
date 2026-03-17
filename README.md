@@ -13,24 +13,34 @@ This repository powers my personal blog at https://johnnyhua.github.io
 └── assets/         # CSS, images, etc.
 ```
 
+## Bilingual Support
+
+All pages support English and Chinese with a language toggle button (top-right corner).
+
+Content uses `data-lang` attributes:
+```html
+<div data-lang="en">English content</div>
+<div data-lang="zh" style="display: none;">中文内容</div>
+```
+
 ## Adding Content
 
 ### New Problem
 
 1. Copy `problems/_template.md` to `problems/pXXX-short-name.md`
-2. Copy `problems/_template-zh.md` to `problems/pXXX-short-name-zh.md`
+2. Add bilingual content using `data-lang` attributes
 3. Update `problems/index.md`
 
 ### New Solution
 
 1. Copy `solutions/_template.md` to `solutions/sXXX-short-name.md`
-2. Copy `solutions/_template-zh.md` to `solutions/sXXX-short-name-zh.md`
+2. Add bilingual content using `data-lang` attributes
 3. Update `solutions/index.md`
 
 ### New Project
 
 1. Copy `projects/_template.md` to `projects/project-name.md`
-2. Copy `projects/_template-zh.md` to `projects/project-name-zh.md`
+2. Add bilingual content using `data-lang` attributes
 3. Update `projects/index.md`
 
 ## Local Development
