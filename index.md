@@ -19,6 +19,10 @@ I build AI-powered tools and workflows. This is where I document my problems, so
     <strong>Setup</strong>
     <span>My development environment</span>
   </a>
+  <a href="/setup/index-zh.html">
+    <strong>开发环境</strong>
+    <span>中文版</span>
+  </a>
   <a href="/workflow/">
     <strong>Workflow</strong>
     <span>How I work with AI tools</span>
