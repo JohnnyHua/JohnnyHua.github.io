@@ -6,207 +6,235 @@ title: Solutions
 <h1 data-lang="en">Solutions</h1>
 <h1 data-lang="zh" style="display: none;">解决方案</h1>
 
-<div data-lang="en">How I solved specific problems.</div>
-<div data-lang="zh" style="display: none;">我如何解决特定问题。</div>
+<p data-lang="en">How I solved specific problems.</p>
+<p data-lang="zh" style="display: none;">我如何解决特定问题。</p>
 
----
+<hr>
 
-## S001: <span data-lang="en">Context Handoff Across Platforms</span><span data-lang="zh" style="display: none;">跨平台上下文交接</span>
+<h2>S001: <span data-lang="en">Context Handoff Across Platforms</span><span data-lang="zh" style="display: none;">跨平台上下文交接</span></h2>
 
 <div data-lang="en">
-**Problem**: [P004](/problems/) — When AI tool quota runs out, switching platforms loses context.
+<p><strong>Problem</strong>: <a href="/problems/">P004</a> — When AI tool quota runs out, switching platforms loses context.</p>
 </div>
 <div data-lang="zh" style="display: none;">
-**问题**: [P004](/problems/) — AI 工具配额用完时，切换平台会丢失上下文。
+<p><strong>问题</strong>: <a href="/problems/">P004</a> — AI 工具配额用完时，切换平台会丢失上下文。</p>
 </div>
 
-### <span data-lang="en">The Problem</span><span data-lang="zh" style="display: none;">问题是什么</span>
+<h3 data-lang="en">The Problem</h3>
+<h3 data-lang="zh" style="display: none;">问题是什么</h3>
 
 <div data-lang="en">
-I use multiple AI tools (Codex, Claude Code, OpenCode, GLM-5). When one runs out of quota, I switch to another. But the new platform doesn't know:
-- What project I'm working on
-- What decisions were made
-- What's the current state
-- What's blocked
-
-This means re-explaining everything from scratch.
+<p>I use multiple AI tools (Codex, Claude Code, OpenCode, GLM-5). When one runs out of quota, I switch to another. But the new platform doesn't know:</p>
+<ul>
+  <li>What project I'm working on</li>
+  <li>What decisions were made</li>
+  <li>What's the current state</li>
+  <li>What's blocked</li>
+</ul>
+<p>This means re-explaining everything from scratch.</p>
 </div>
 <div data-lang="zh" style="display: none;">
-我使用多个 AI 工具（Codex、Claude Code、OpenCode、GLM-5）。当一个配额用完，我切换到另一个。但新平台不知道：
-- 我在做什么项目
-- 做了什么决策
-- 当前状态是什么
-- 什么卡住了
-
-这意味着要从头重新解释一切。
+<p>我使用多个 AI 工具（Codex、Claude Code、OpenCode、GLM-5）。当一个配额用完，我切换到另一个。但新平台不知道：</p>
+<ul>
+  <li>我在做什么项目</li>
+  <li>做了什么决策</li>
+  <li>当前状态是什么</li>
+  <li>什么卡住了</li>
+</ul>
+<p>这意味着要从头重新解释一切。</p>
 </div>
 
-### <span data-lang="en">Solution</span><span data-lang="zh" style="display: none;">解决方案</span>
+<h3 data-lang="en">Solution</h3>
+<h3 data-lang="zh" style="display: none;">解决方案</h3>
 
 <div data-lang="en">
-**Two tools I built**:
+<p><strong>Two tools I built</strong>:</p>
 </div>
 <div data-lang="zh" style="display: none;">
-**我构建了两个工具**：
+<p><strong>我构建了两个工具</strong>：</p>
 </div>
 
-#### 1. automem — <span data-lang="en">Memory Storage</span><span data-lang="zh" style="display: none;">记忆存储</span>
+<h4>1. automem — <span data-lang="en">Memory Storage</span><span data-lang="zh" style="display: none;">记忆存储</span></h4>
 
 <div data-lang="en">
-Stores important context across sessions:
-- Decisions made
-- Patterns discovered
-- User preferences
-- Bug fixes and root causes
-
-```python
-# Example usage
+<p>Stores important context across sessions:</p>
+<ul>
+  <li>Decisions made</li>
+  <li>Patterns discovered</li>
+  <li>User preferences</li>
+  <li>Bug fixes and root causes</li>
+</ul>
+<pre><code># Example usage
 store_memory({
     "content": "Chose SQLite over PostgreSQL for aibrain. Solo project, no scaling needed.",
     "tags": ["architecture", "aibrain"],
     "importance": 0.8
-})
-```
+})</code></pre>
 </div>
 <div data-lang="zh" style="display: none;">
-跨会话存储重要上下文：
-- 做过的决策
-- 发现的模式
-- 用户偏好
-- Bug 修复和根因
-
-```python
-# 示例用法
+<p>跨会话存储重要上下文：</p>
+<ul>
+  <li>做过的决策</li>
+  <li>发现的模式</li>
+  <li>用户偏好</li>
+  <li>Bug 修复和根因</li>
+</ul>
+<pre><code># 示例用法
 store_memory({
     "content": "aibrain 选了 SQLite 而不是 PostgreSQL。个人项目，不需要扩展。",
     "tags": ["architecture", "aibrain"],
     "importance": 0.8
-})
-```
+})</code></pre>
 </div>
 
-#### 2. handoff — <span data-lang="en">Context Transfer</span><span data-lang="zh" style="display: none;">上下文转移</span>
+<h4>2. handoff — <span data-lang="en">Context Transfer</span><span data-lang="zh" style="display: none;">上下文转移</span></h4>
 
 <div data-lang="en">
-Generates a structured handoff document:
-- Current task status
-- Key files
-- Decisions made
-- Blockers
-- Next steps
-
-This can be passed to a new AI session.
+<p>Generates a structured handoff document:</p>
+<ul>
+  <li>Current task status</li>
+  <li>Key files</li>
+  <li>Decisions made</li>
+  <li>Blockers</li>
+  <li>Next steps</li>
+</ul>
+<p>This can be passed to a new AI session.</p>
 </div>
 <div data-lang="zh" style="display: none;">
-生成结构化的交接文档：
-- 当前任务状态
-- 关键文件
-- 已做决策
-- 阻塞问题
-- 下一步
-
-可以传递给新的 AI 会话。
+<p>生成结构化的交接文档：</p>
+<ul>
+  <li>当前任务状态</li>
+  <li>关键文件</li>
+  <li>已做决策</li>
+  <li>阻塞问题</li>
+  <li>下一步</li>
+</ul>
+<p>可以传递给新的 AI 会话。</p>
 </div>
 
-### <span data-lang="en">Trade-offs</span><span data-lang="zh" style="display: none;">权衡</span>
+<h3 data-lang="en">Trade-offs</h3>
+<h3 data-lang="zh" style="display: none;">权衡</h3>
 
 <div data-lang="en">
-- **Time cost**: Takes 2-5 minutes to create proper handoff
-- **Discipline required**: Must do it before quota runs out
-- **Format learning**: AI needs to understand the handoff format
+<ul>
+  <li><strong>Time cost</strong>: Takes 2-5 minutes to create proper handoff</li>
+  <li><strong>Discipline required</strong>: Must do it before quota runs out</li>
+  <li><strong>Format learning</strong>: AI needs to understand the handoff format</li>
+</ul>
 </div>
 <div data-lang="zh" style="display: none;">
-- **时间成本**: 创建合适的交接需要 2-5 分钟
-- **需要自律**: 必须在配额用完前做
-- **格式学习**: AI 需要理解交接格式
+<ul>
+  <li><strong>时间成本</strong>: 创建合适的交接需要 2-5 分钟</li>
+  <li><strong>需要自律</strong>: 必须在配额用完前做</li>
+  <li><strong>格式学习</strong>: AI 需要理解交接格式</li>
+</ul>
 </div>
 
-### <span data-lang="en">Lessons Learned</span><span data-lang="zh" style="display: none;">经验教训</span>
+<h3 data-lang="en">Lessons Learned</h3>
+<h3 data-lang="zh" style="display: none;">经验教训</h3>
 
 <div data-lang="en">
-1. **Don't wait until quota runs out** — Create handoff when you feel you're at a good stopping point
-2. **Keep it minimal** — Only transfer what's essential
-3. **Test handoff** — Verify the receiving AI understands the context
+<ol>
+  <li><strong>Don't wait until quota runs out</strong> — Create handoff when you feel you're at a good stopping point</li>
+  <li><strong>Keep it minimal</strong> — Only transfer what's essential</li>
+  <li><strong>Test handoff</strong> — Verify the receiving AI understands the context</li>
+</ol>
 </div>
 <div data-lang="zh" style="display: none;">
-1. **不要等到配额用完** — 在一个好的停止点就创建交接
-2. **保持最小** — 只转移必要的
-3. **测试交接** — 验证接收的 AI 理解上下文
+<ol>
+  <li><strong>不要等到配额用完</strong> — 在一个好的停止点就创建交接</li>
+  <li><strong>保持最小</strong> — 只转移必要的</li>
+  <li><strong>测试交接</strong> — 验证接收的 AI 理解上下文</li>
+</ol>
 </div>
 
----
+<hr>
 
-## S002: <span data-lang="en">AI Cost Control — GLM-5 Fallback</span><span data-lang="zh" style="display: none;">AI 成本控制 — GLM-5 备用</span>
+<h2>S002: <span data-lang="en">AI Cost Control — GLM-5 Fallback</span><span data-lang="zh" style="display: none;">AI 成本控制 — GLM-5 备用</span></h2>
 
 <div data-lang="en">
-**Problem**: [P002](/problems/) — Subscription quotas run out, can't afford unlimited premium models.
+<p><strong>Problem</strong>: <a href="/problems/">P002</a> — Subscription quotas run out, can't afford unlimited premium models.</p>
 </div>
 <div data-lang="zh" style="display: none;">
-**问题**: [P002](/problems/) — 订阅配额用完，用不起无限量的高级模型。
+<p><strong>问题</strong>: <a href="/problems/">P002</a> — 订阅配额用完，用不起无限量的高级模型。</p>
 </div>
 
-### <span data-lang="en">Solution</span><span data-lang="zh" style="display: none;">解决方案</span>
+<h3 data-lang="en">Solution</h3>
+<h3 data-lang="zh" style="display: none;">解决方案</h3>
 
 <div data-lang="en">
-**Primary**: Codex / Claude Opus (best quality)
-**Fallback**: GLM-5 via Ali Bailian premium subscription
-
-**Why GLM-5**:
-- Close to Codex/Opus in quality
-- Unlimited usage with premium subscription
-- Good enough for most tasks
+<p><strong>Primary</strong>: Codex / Claude Opus (best quality)<br>
+<strong>Fallback</strong>: GLM-5 via Ali Bailian premium subscription</p>
+<p><strong>Why GLM-5</strong>:</p>
+<ul>
+  <li>Close to Codex/Opus in quality</li>
+  <li>Unlimited usage with premium subscription</li>
+  <li>Good enough for most tasks</li>
+</ul>
 </div>
 <div data-lang="zh" style="display: none;">
-**主力**: Codex / Claude Opus（质量最好）
-**备用**: GLM-5（阿里百炼高级订阅）
-
-**为什么选 GLM-5**：
-- 质量接近 Codex/Opus
-- 高级订阅无限量使用
-- 对大多数任务够用
+<p><strong>主力</strong>: Codex / Claude Opus（质量最好）<br>
+<strong>备用</strong>: GLM-5（阿里百炼高级订阅）</p>
+<p><strong>为什么选 GLM-5</strong>：</p>
+<ul>
+  <li>质量接近 Codex/Opus</li>
+  <li>高级订阅无限量使用</li>
+  <li>对大多数任务够用</li>
+</ul>
 </div>
 
-### <span data-lang="en">Decision Tree</span><span data-lang="zh" style="display: none;">决策树</span>
+<h3 data-lang="en">Decision Tree</h3>
+<h3 data-lang="zh" style="display: none;">决策树</h3>
 
-```
-<span data-lang="en">Task complexity?</span><span data-lang="zh" style="display: none;">任务复杂度？</span>
-├─ <span data-lang="en">High → Codex/Opus (if quota available)</span><span data-lang="zh" style="display: none;">高 → Codex/Opus（如果配额够）</span>
-│         └─ <span data-lang="en">No quota? → GLM-5</span><span data-lang="zh" style="display: none;">没配额？ → GLM-5</span>
-└─ <span data-lang="en">Low/Medium → GLM-5 directly</span><span data-lang="zh" style="display: none;">低/中 → 直接用 GLM-5</span>
-```
+<pre><code data-lang="en">Task complexity?
+├─ High → Codex/Opus (if quota available)
+│         └─ No quota? → GLM-5
+└─ Low/Medium → GLM-5 directly</code>
+<code data-lang="zh" style="display: none;">任务复杂度？
+├─ 高 → Codex/Opus（如果配额够）
+│        └─ 没配额？ → GLM-5
+└─ 低/中 → 直接用 GLM-5</code></pre>
 
-### <span data-lang="en">Trade-offs</span><span data-lang="zh" style="display: none;">权衡</span>
+<h3 data-lang="en">Trade-offs</h3>
+<h3 data-lang="zh" style="display: none;">权衡</h3>
 
 <div data-lang="en">
-- GLM-5 slightly worse at complex reasoning
-- Sometimes needs more prompts to get same result
-- But: unlimited, predictable cost
+<ul>
+  <li>GLM-5 slightly worse at complex reasoning</li>
+  <li>Sometimes needs more prompts to get same result</li>
+  <li>But: unlimited, predictable cost</li>
+</ul>
 </div>
 <div data-lang="zh" style="display: none;">
-- GLM-5 复杂推理稍弱
-- 有时需要更多 prompt 才能得到相同结果
-- 但：无限量，成本可预测
+<ul>
+  <li>GLM-5 复杂推理稍弱</li>
+  <li>有时需要更多 prompt 才能得到相同结果</li>
+  <li>但：无限量，成本可预测</li>
+</ul>
 </div>
 
----
+<hr>
 
-## <span data-lang="en">Template for New Solutions</span><span data-lang="zh" style="display: none;">新方案模板</span>
+<h2 data-lang="en">Template for New Solutions</h2>
+<h2 data-lang="zh" style="display: none;">新方案模板</h2>
 
 <div data-lang="en">
-When adding a new solution:
-
-1. **Problem**: Link to the problem page
-2. **What I tried**: List attempts
-3. **What worked**: The actual solution
-4. **Trade-offs**: What I gave up
-5. **Lessons learned**: For future reference
+<p>When adding a new solution:</p>
+<ol>
+  <li><strong>Problem</strong>: Link to the problem page</li>
+  <li><strong>What I tried</strong>: List attempts</li>
+  <li><strong>What worked</strong>: The actual solution</li>
+  <li><strong>Trade-offs</strong>: What I gave up</li>
+  <li><strong>Lessons learned</strong>: For future reference</li>
+</ol>
 </div>
 <div data-lang="zh" style="display: none;">
-添加新解决方案时：
-
-1. **问题**: 链接到问题页面
-2. **尝试了什么**: 列出尝试
-3. **什么有效**: 实际解决方案
-4. **权衡**: 放弃了什么
-5. **经验教训**: 供未来参考
+<p>添加新解决方案时：</p>
+<ol>
+  <li><strong>问题</strong>: 链接到问题页面</li>
+  <li><strong>尝试了什么</strong>: 列出尝试</li>
+  <li><strong>什么有效</strong>: 实际解决方案</li>
+  <li><strong>权衡</strong>: 放弃了什么</li>
+  <li><strong>经验教训</strong>: 供未来参考</li>
+</ol>
 </div>
