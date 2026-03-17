@@ -35,13 +35,25 @@ I build AI-powered tools and workflows. This is where I document my problems, so
     <strong>Problems</strong>
     <span>Pain points & challenges</span>
   </a>
+  <a href="/problems/index-zh.html">
+    <strong>问题与痛点</strong>
+    <span>中文版</span>
+  </a>
   <a href="/solutions/">
     <strong>Solutions</strong>
     <span>How I solved problems</span>
   </a>
+  <a href="/solutions/index-zh.html">
+    <strong>解决方案</strong>
+    <span>中文版</span>
+  </a>
   <a href="/projects/">
     <strong>Projects</strong>
     <span>Idea & project status</span>
+  </a>
+  <a href="/projects/index-zh.html">
+    <strong>项目</strong>
+    <span>中文版</span>
   </a>
 </div>
 
