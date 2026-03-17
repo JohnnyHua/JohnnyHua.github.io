@@ -23,6 +23,10 @@ I build AI-powered tools and workflows. This is where I document my problems, so
     <strong>Workflow</strong>
     <span>How I work with AI tools</span>
   </a>
+  <a href="/workflow/index-zh.html">
+    <strong>开发流程</strong>
+    <span>中文版</span>
+  </a>
   <a href="/problems/">
     <strong>Problems</strong>
     <span>Pain points & challenges</span>
@@ -33,7 +37,7 @@ I build AI-powered tools and workflows. This is where I document my problems, so
   </a>
   <a href="/projects/">
     <strong>Projects</strong>
-    <span>Ideas & project status</span>
+    <span>Idea & project status</span>
   </a>
 </div>
 
