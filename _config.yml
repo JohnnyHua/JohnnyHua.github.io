@@ -1,0 +1,46 @@
+title: Johnny Hua
+description: AI Engineer - Thoughts, Problems & Solutions
+author: Johnny Hua
+url: "https://johnnyhua.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Navigation
+nav:
+  - name: Setup
+    path: /setup/
+  - name: Workflow
+    path: /workflow/
+  - name: Problems
+    path: /problems/
+  - name: Solutions
+    path: /solutions/
+  - name: Projects
+    path: /projects/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
