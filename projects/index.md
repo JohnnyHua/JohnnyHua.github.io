@@ -143,18 +143,22 @@ title: Projects
 
 <hr>
 
-<h3 data-lang="en">Accounting</h3>
+<h3 data-lang="en">Expense Tracker</h3>
 <h3 data-lang="zh" style="display: none;">记账</h3>
 
 <div data-lang="en">
 <p><strong>Status</strong>: ⏸️ Paused</p>
-<p>Personal accounting tool.</p>
-<p><strong>Tech</strong>: Python</p>
+<p>iOS expense tracking app. Goal: effortless tracking with real balance calculation.</p>
+<p><strong>Blocker</strong>: Calculation logic keeps failing, OCR too expensive.</p>
+<p><strong>Data sources</strong>: Apple Pay notifications, bank screenshots, relevé files</p>
+<p><a href="expense-tracker.html">Details →</a></p>
 </div>
 <div data-lang="zh" style="display: none;">
 <p><strong>状态</strong>: ⏸️ 暂停</p>
-<p>个人记账工具。</p>
-<p><strong>技术</strong>: Python</p>
+<p>iOS 记账应用。目标：无感记账，计算真实余额。</p>
+<p><strong>卡点</strong>：计算逻辑一直算不对，OCR 太贵。</p>
+<p><strong>数据源</strong>：Apple Pay 弹窗、银行截图、relevé 文件</p>
+<p><a href="expense-tracker.html">详情 →</a></p>
 </div>
 
 <hr>
