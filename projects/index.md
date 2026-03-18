@@ -54,7 +54,7 @@ title: Projects
   <li>Evidence-first completion rules</li>
   <li>Tool-agnostic protocol</li>
 </ul>
-<p><strong>Location</strong>: <code>/clawd/pcp/</code></p>
+<p><a href="pcp.html">Details →</a></p>
 </div>
 <div data-lang="zh" style="display: none;">
 <p><strong>状态</strong>: 🔵 进行中</p>
@@ -72,7 +72,7 @@ title: Projects
   <li>证据优先的完成规则</li>
   <li>工具无关的协议</li>
 </ul>
-<p><strong>位置</strong>: <code>/clawd/pcp/</code></p>
+<p><a href="pcp.html">详情 →</a></p>
 </div>
 
 <hr>
