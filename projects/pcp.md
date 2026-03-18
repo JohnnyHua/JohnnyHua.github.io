@@ -61,6 +61,44 @@ github: https://github.com/JohnnyHua/pcp-skills
 
 <hr>
 
+<h2 data-lang="en">What Works Today</h2>
+<h2 data-lang="zh" style="display: none;">当前能用什么</h2>
+
+<div data-lang="en">
+<p><strong>Host</strong>: OpenCode (plugin installed via <code>npx skills add JohnnyHua/pcp-skills</code>)</p>
+<p><strong>Scenario</strong>: Single developer, single project directory</p>
+<p><strong>Available workflow</strong>:</p>
+<ul>
+  <li><code>pcp_init</code> — scan project, establish baseline</li>
+  <li><code>pcp_plan</code> — compile approved tasks into queue</li>
+  <li><code>pcp_status</code> — show current task, queue, backlog</li>
+  <li><code>pcp_done</code> — submit completion (gated approval)</li>
+  <li><code>pcp_review</code> / <code>pcp_review_apply</code> — unified review flow</li>
+  <li><code>pcp_handoff</code> — generate handoff for another AI tool</li>
+  <li><code>pcp_intake</code> — resume from handoff or onboard new project</li>
+  <li>Proposal / Blueprint / Concern / Backlog management</li>
+</ul>
+<p><strong>Not yet</strong>: Multi-host adapters (Claude Code, Cursor), semantic intent layer</p>
+</div>
+<div data-lang="zh" style="display: none;">
+<p><strong>宿主</strong>: OpenCode（通过 <code>npx skills add JohnnyHua/pcp-skills</code> 安装插件）</p>
+<p><strong>场景</strong>: 单人、单项目目录</p>
+<p><strong>可用工作流</strong>：</p>
+<ul>
+  <li><code>pcp_init</code> — 扫描项目，建立基线</li>
+  <li><code>pcp_plan</code> — 编译已批准的任务到队列</li>
+  <li><code>pcp_status</code> — 显示当前任务、队列、backlog</li>
+  <li><code>pcp_done</code> — 提交完成（需审批）</li>
+  <li><code>pcp_review</code> / <code>pcp_review_apply</code> — 统一审核流程</li>
+  <li><code>pcp_handoff</code> — 生成交接文档给其他 AI 工具</li>
+  <li><code>pcp_intake</code> — 从交接恢复或接入新项目</li>
+  <li>Proposal / Blueprint / Concern / Backlog 管理</li>
+</ul>
+<p><strong>暂不支持</strong>：多宿主适配器（Claude Code、Cursor）、语义意图层</p>
+</div>
+
+<hr>
+
 <h2 data-lang="en">Problems PCP Solves</h2>
 <h2 data-lang="zh" style="display: none;">解决的问题</h2>
 
@@ -86,40 +124,63 @@ github: https://github.com/JohnnyHua/pcp-skills
 <h2 data-lang="en">Architecture</h2>
 <h2 data-lang="zh" style="display: none;">架构</h2>
 
-<h3 data-lang="en">Three Layers</h3>
-<h3 data-lang="zh" style="display: none;">三层架构</h3>
-
 <div data-lang="en">
+<p>All state lives in <code>.opencode/pcp/</code> inside your project:</p>
 <table>
-  <thead><tr><th>Layer</th><th>Role</th><th>Files</th></tr></thead>
+  <thead><tr><th>File</th><th>Purpose</th></tr></thead>
   <tbody>
-    <tr><td>Layer 1</td><td>Static Memory</td><td>PROJECT.md, ARCH.md, DECISIONS.md</td></tr>
-    <tr><td>Layer 2</td><td>Dynamic State</td><td>STATE/current.json, TASKS/, EVIDENCE/</td></tr>
-    <tr><td>Layer 3</td><td>Session Bootstrap</td><td>AGENT_BOOTSTRAP.md</td></tr>
+    <tr><td><code>stack.json</code></td><td>Runtime state — current task, queue, IDs (SSOT)</td></tr>
+    <tr><td><code>events.jsonl</code></td><td>Append-only event log — full history</td></tr>
+    <tr><td><code>taskcards/</code></td><td>TaskCard files — one JSON per task</td></tr>
+    <tr><td><code>plans/</code></td><td>Plan records — compiled from pcp_plan</td></tr>
+    <tr><td><code>blueprints/</code></td><td>Blueprints — step-by-step execution guides</td></tr>
+    <tr><td><code>PROJECT.md</code></td><td>Project baseline — purpose, status, constraints</td></tr>
+    <tr><td><code>WORKLOG.md</code></td><td>Work log — chronological notes</td></tr>
+    <tr><td><code>HANDOFF.md</code></td><td>Handoff document — generated on demand</td></tr>
   </tbody>
 </table>
+<p><strong>Key rule</strong>: <code>stack.json</code> is the single source of truth for runtime state.</p>
 </div>
 <div data-lang="zh" style="display: none;">
+<p>所有状态存储在项目内的 <code>.opencode/pcp/</code> 目录：</p>
 <table>
-  <thead><tr><th>层</th><th>作用</th><th>文件</th></tr></thead>
+  <thead><tr><th>文件</th><th>用途</th></tr></thead>
   <tbody>
-    <tr><td>Layer 1</td><td>静态记忆</td><td>PROJECT.md, ARCH.md, DECISIONS.md</td></tr>
-    <tr><td>Layer 2</td><td>动态状态</td><td>STATE/current.json, TASKS/, EVIDENCE/</td></tr>
-    <tr><td>Layer 3</td><td>会话启动</td><td>AGENT_BOOTSTRAP.md</td></tr>
+    <tr><td><code>stack.json</code></td><td>运行时状态 — 当前任务、队列、ID（SSOT）</td></tr>
+    <tr><td><code>events.jsonl</code></td><td>追加式事件日志 — 完整历史</td></tr>
+    <tr><td><code>taskcards/</code></td><td>任务卡片 — 每个任务一个 JSON</td></tr>
+    <tr><td><code>plans/</code></td><td>计划记录 — 由 pcp_plan 编译</td></tr>
+    <tr><td><code>blueprints/</code></td><td>蓝图 — 分步执行指南</td></tr>
+    <tr><td><code>PROJECT.md</code></td><td>项目基线 — 目的、状态、约束</td></tr>
+    <tr><td><code>WORKLOG.md</code></td><td>工作日志 — 按时间记录</td></tr>
+    <tr><td><code>HANDOFF.md</code></td><td>交接文档 — 按需生成</td></tr>
   </tbody>
 </table>
+<p><strong>核心规则</strong>：<code>stack.json</code> 是运行时状态的单一数据源。</p>
 </div>
 
-<h3 data-lang="en">Key Rule</h3>
-<h3 data-lang="zh" style="display: none;">核心规则</h3>
+<hr>
+
+<h2 data-lang="en">Protocol Principles</h2>
+<h2 data-lang="zh" style="display: none;">协议原则</h2>
 
 <div data-lang="en">
-<p><strong>A task is not done without required evidence.</strong></p>
-<p>Single source of truth: <code>STATE/current.json</code></p>
+<ol>
+  <li><strong>No UI</strong> — Keep Markdown/JSON interface, faster iteration, easier audit</li>
+  <li><strong>SSOT is stack.json</strong> — Prevents state divergence across views</li>
+  <li><strong>Evidence is mandatory</strong> — Task completion requires verifiable proof</li>
+  <li><strong>Planning stays in PM layer</strong> — Protocol doesn't do autonomous planning</li>
+  <li><strong>Approval-first</strong> — Tasks and subtasks require explicit approval before execution</li>
+</ol>
 </div>
 <div data-lang="zh" style="display: none;">
-<p><strong>没有证据就不能标记完成。</strong></p>
-<p>单一数据源：<code>STATE/current.json</code></p>
+<ol>
+  <li><strong>没有 UI</strong> — 保持 Markdown/JSON 接口，迭代更快，审计更易</li>
+  <li><strong>SSOT 是 stack.json</strong> — 防止跨视图状态分歧</li>
+  <li><strong>证据是强制的</strong> — 任务完成需要可验证的证据</li>
+  <li><strong>规划留在 PM 层</strong> — 协议层不做自主规划</li>
+  <li><strong>审批优先</strong> — 任务和子任务需要明确审批后才能执行</li>
+</ol>
 </div>
 
 <hr>
@@ -130,17 +191,17 @@ github: https://github.com/JohnnyHua/pcp-skills
 <div data-lang="en">
 <ul>
   <li><strong>Runtime</strong>: OpenCode plugin (TypeScript)</li>
-  <li><strong>State</strong>: JSON + Markdown files</li>
+  <li><strong>State</strong>: JSON + Markdown files (local only)</li>
   <li><strong>Skills</strong>: pcp-intake, pcp-setup, pcp-sprint-review</li>
-  <li><strong>Tools</strong>: 13+ PCP commands</li>
+  <li><strong>Tools</strong>: 20+ PCP commands</li>
 </ul>
 </div>
 <div data-lang="zh" style="display: none;">
 <ul>
   <li><strong>运行时</strong>: OpenCode 插件 (TypeScript)</li>
-  <li><strong>状态</strong>: JSON + Markdown 文件</li>
+  <li><strong>状态</strong>: JSON + Markdown 文件（仅本地）</li>
   <li><strong>技能</strong>: pcp-intake, pcp-setup, pcp-sprint-review</li>
-  <li><strong>工具</strong>: 13+ PCP 命令</li>
+  <li><strong>工具</strong>: 20+ PCP 命令</li>
 </ul>
 </div>
 
@@ -150,11 +211,11 @@ github: https://github.com/JohnnyHua/pcp-skills
 <h2 data-lang="zh" style="display: none;">进度</h2>
 
 <div data-lang="en">
-<p><strong>Version</strong>: v0 final stage, approaching v0.1</p>
+<p><strong>Version</strong>: v0 complete, starting v0.1</p>
 <ul>
-  <li><input type="checkbox" checked disabled> TaskCard / Queue</li>
-  <li><input type="checkbox" checked disabled> pcp_plan / pcp_done / pcp_status</li>
-  <li><input type="checkbox" checked disabled> Proposal / Subtask approval</li>
+  <li><input type="checkbox" checked disabled> TaskCard / Queue / stack.json</li>
+  <li><input type="checkbox" checked disabled> pcp_init / pcp_plan / pcp_done / pcp_status</li>
+  <li><input type="checkbox" checked disabled> Proposal / Subtask approval flow</li>
   <li><input type="checkbox" checked disabled> Blueprint for complex tasks</li>
   <li><input type="checkbox" checked disabled> Handoff / Intake</li>
   <li><input type="checkbox" checked disabled> Backlog / Concern Log</li>
@@ -163,39 +224,17 @@ github: https://github.com/JohnnyHua/pcp-skills
 </ul>
 </div>
 <div data-lang="zh" style="display: none;">
-<p><strong>版本</strong>: v0 收尾阶段，接近 v0.1</p>
+<p><strong>版本</strong>: v0 完成，开始 v0.1</p>
 <ul>
-  <li><input type="checkbox" checked disabled> TaskCard / Queue</li>
-  <li><input type="checkbox" checked disabled> pcp_plan / pcp_done / pcp_status</li>
-  <li><input type="checkbox" checked disabled> Proposal / Subtask 审批</li>
+  <li><input type="checkbox" checked disabled> TaskCard / Queue / stack.json</li>
+  <li><input type="checkbox" checked disabled> pcp_init / pcp_plan / pcp_done / pcp_status</li>
+  <li><input type="checkbox" checked disabled> Proposal / Subtask 审批流程</li>
   <li><input type="checkbox" checked disabled> Blueprint 复杂任务支持</li>
   <li><input type="checkbox" checked disabled> Handoff / Intake</li>
   <li><input type="checkbox" checked disabled> Backlog / Concern Log</li>
   <li><input type="checkbox" checked disabled> pcp_review / pcp_review_apply</li>
   <li><input type="checkbox" disabled> v0.1 体验优化（进行中）</li>
 </ul>
-</div>
-
-<hr>
-
-<h2 data-lang="en">Key Decisions</h2>
-<h2 data-lang="zh" style="display: none;">关键决策</h2>
-
-<div data-lang="en">
-<ol>
-  <li><strong>No UI in v0.3</strong> — Keep Markdown/JSON interface, faster iteration</li>
-  <li><strong>SSOT is STATE/current.json</strong> — Prevents state divergence</li>
-  <li><strong>Evidence is mandatory</strong> — Blocks hallucinated completion</li>
-  <li><strong>Planning stays in PM layer</strong> — Protocol doesn't do autonomous planning</li>
-</ol>
-</div>
-<div data-lang="zh" style="display: none;">
-<ol>
-  <li><strong>v0.3 没有 UI</strong> — 保持 Markdown/JSON 接口，迭代更快</li>
-  <li><strong>SSOT 是 STATE/current.json</strong> — 防止状态分歧</li>
-  <li><strong>证据是强制的</strong> — 阻止虚假完成</li>
-  <li><strong>规划留在 PM 层</strong> — 协议层不做自主规划</li>
-</ol>
 </div>
 
 <hr>
