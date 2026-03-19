@@ -55,10 +55,65 @@ title: Problems
 
 <hr>
 
+<h3>P002: <span data-lang="en">Project Complexity Spiral</span><span data-lang="zh" style="display: none;">项目复杂度失控</span></h3>
+
+<div data-lang="en">
+<p><strong>Status</strong>: 🔵 In Progress</p>
+<p><strong>Context</strong>: Every complex project I work on becomes messy over time. The more I build, the harder it is to plan. I can't see the structure anymore.</p>
+<p><strong>Symptoms</strong>:</p>
+<ul>
+  <li>Features coupling — change one thing, break another</li>
+  <li>Afraid to refactor — don't know what will break</li>
+  <li>Can't estimate work — everything feels interconnected</li>
+  <li>New features add complexity exponentially</li>
+</ul>
+<p><strong>Root cause</strong>: No clear boundaries between modules. Code grows organically without interface definitions.</p>
+<p><strong>My solution — Decompose to interfaces</strong>:</p>
+<ol>
+  <li><strong>Define <code>_dict</code> interface</strong> — simplest possible contract: function + input + output</li>
+  <li><strong>Extract from chaos</strong> — find working code, define its interface, isolate it</li>
+  <li><strong>Core first, extras later</strong> — split core functionality before peripheral features</li>
+  <li><strong>Verify with baseline</strong> — ensure same output before and after refactoring</li>
+</ol>
+<p><strong>Current workflow</strong>:</p>
+<ul>
+  <li>AI decomposes and explains to me</li>
+  <li>Future: AI decomposes, I customize the interface</li>
+</ul>
+<p><strong>Related</strong>: All projects (PCP, aibrain, Expense Tracker)</p>
+</div>
+<div data-lang="zh" style="display: none;">
+<p><strong>状态</strong>: 🔵 进行中</p>
+<p><strong>背景</strong>: 每个复杂项目做着做着就乱了。越做越没法规划。看不到结构。</p>
+<p><strong>症状</strong>：</p>
+<ul>
+  <li>功能耦合 — 改一处，坏多处</li>
+  <li>不敢重构 — 不知道会破坏什么</li>
+  <li>无法估时 — 感觉什么都连在一起</li>
+  <li>新功能让复杂度指数级增长</li>
+</ul>
+<p><strong>根本原因</strong>: 模块之间没有清晰的边界。代码有机生长，没有接口定义。</p>
+<p><strong>我的解法 — 拆解到接口</strong>：</p>
+<ol>
+  <li><strong>定义 <code>_dict</code> 接口</strong> — 最简单的契约：功能 + 输入 + 输出</li>
+  <li><strong>从混乱中提取</strong> — 找到能用的代码，定义接口，隔离出来</li>
+  <li><strong>先核心，后额外</strong> — 先拆核心功能，再拆周边功能</li>
+  <li><strong>Baseline 验证</strong> — 确保修改前后输出一致</li>
+</ol>
+<p><strong>当前工作流</strong>：</p>
+<ul>
+  <li>AI 拆解，讲给我听</li>
+  <li>日后：AI 拆解，我来定制接口</li>
+</ul>
+<p><strong>相关</strong>: 所有项目（PCP、aibrain、记账）</p>
+</div>
+
+<hr>
+
 <h2 data-lang="en">Cost Management</h2>
 <h2 data-lang="zh" style="display: none;">成本管理</h2>
 
-<h3>P002: <span data-lang="en">AI Cost Control for Solo Developers</span><span data-lang="zh" style="display: none;">个人开发者的 AI 成本控制</span></h3>
+<h3>P003: <span data-lang="en">AI Cost Control for Solo Developers</span><span data-lang="zh" style="display: none;">个人开发者的 AI 成本控制</span></h3>
 
 <div data-lang="en">
 <p><strong>Status</strong>: 🔵 In Progress</p>
@@ -100,7 +155,7 @@ title: Problems
 <h2 data-lang="en">Workflow &amp; Process</h2>
 <h2 data-lang="zh" style="display: none;">流程与工作流</h2>
 
-<h3>P003: <span data-lang="en">Git Workflow for Solo Developers</span><span data-lang="zh" style="display: none;">个人开发者的 Git 工作流</span></h3>
+<h3>P004: <span data-lang="en">Git Workflow for Solo Developers</span><span data-lang="zh" style="display: none;">个人开发者的 Git 工作流</span></h3>
 
 <div data-lang="en">
 <p><strong>Status</strong>: 🟡 Pending</p>
@@ -129,7 +184,7 @@ title: Problems
 <p><strong>尝试</strong>: 暂无。</p>
 </div>
 
-<h3>P004: <span data-lang="en">Context Handoff Across Platforms</span><span data-lang="zh" style="display: none;">跨平台上下文交接</span></h3>
+<h3>P005: <span data-lang="en">Context Handoff Across Platforms</span><span data-lang="zh" style="display: none;">跨平台上下文交接</span></h3>
 
 <div data-lang="en">
 <p><strong>Status</strong>: 🟢 Solved</p>
@@ -159,7 +214,7 @@ title: Problems
 <h2 data-lang="en">Technical Issues</h2>
 <h2 data-lang="zh" style="display: none;">技术问题</h2>
 
-<h3>P005: <span data-lang="en">Mermaid Font Rendering</span><span data-lang="zh" style="display: none;">Mermaid 字体渲染</span></h3>
+<h3>P006: <span data-lang="en">Mermaid Font Rendering</span><span data-lang="zh" style="display: none;">Mermaid 字体渲染</span></h3>
 
 <div data-lang="en">
 <p><strong>Status</strong>: 🔵 In Progress</p>
@@ -186,10 +241,11 @@ title: Problems
   <thead><tr><th>#</th><th>Problem</th><th>Status</th><th>Solution</th></tr></thead>
   <tbody>
     <tr><td>P001</td><td>Self-reference in architecture design</td><td>🟡 Pending</td><td>-</td></tr>
-    <tr><td>P002</td><td>AI cost control for solo devs</td><td>🔵 In Progress</td><td>GLM-5 fallback</td></tr>
-    <tr><td>P003</td><td>Git workflow for solo devs</td><td>🟡 Pending</td><td>-</td></tr>
-    <tr><td>P004</td><td>Context handoff across platforms</td><td>🟢 Solved</td><td>automem, handoff</td></tr>
-    <tr><td>P005</td><td>Mermaid font rendering</td><td>🔵 In Progress</td><td>Manual fonts</td></tr>
+    <tr><td>P002</td><td>Project complexity spiral</td><td>🔵 In Progress</td><td>_dict interface decomposition</td></tr>
+    <tr><td>P003</td><td>AI cost control for solo devs</td><td>🔵 In Progress</td><td>GLM-5 fallback</td></tr>
+    <tr><td>P004</td><td>Git workflow for solo devs</td><td>🟡 Pending</td><td>-</td></tr>
+    <tr><td>P005</td><td>Context handoff across platforms</td><td>🟢 Solved</td><td>automem, handoff</td></tr>
+    <tr><td>P006</td><td>Mermaid font rendering</td><td>🔵 In Progress</td><td>Manual fonts</td></tr>
   </tbody>
 </table>
 </div>
@@ -198,10 +254,11 @@ title: Problems
   <thead><tr><th>#</th><th>问题</th><th>状态</th><th>解决方案</th></tr></thead>
   <tbody>
     <tr><td>P001</td><td>架构设计的自指问题</td><td>🟡 待解决</td><td>-</td></tr>
-    <tr><td>P002</td><td>个人开发者的 AI 成本控制</td><td>🔵 进行中</td><td>GLM-5 备用</td></tr>
-    <tr><td>P003</td><td>个人开发者的 Git 工作流</td><td>🟡 待解决</td><td>-</td></tr>
-    <tr><td>P004</td><td>跨平台上下文交接</td><td>🟢 已解决</td><td>automem, handoff</td></tr>
-    <tr><td>P005</td><td>Mermaid 字体渲染</td><td>🔵 进行中</td><td>手动字体</td></tr>
+    <tr><td>P002</td><td>项目复杂度失控</td><td>🔵 进行中</td><td>_dict 接口拆解</td></tr>
+    <tr><td>P003</td><td>个人开发者的 AI 成本控制</td><td>🔵 进行中</td><td>GLM-5 备用</td></tr>
+    <tr><td>P004</td><td>个人开发者的 Git 工作流</td><td>🟡 待解决</td><td>-</td></tr>
+    <tr><td>P005</td><td>跨平台上下文交接</td><td>🟢 已解决</td><td>automem, handoff</td></tr>
+    <tr><td>P006</td><td>Mermaid 字体渲染</td><td>🔵 进行中</td><td>手动字体</td></tr>
   </tbody>
 </table>
 </div>
