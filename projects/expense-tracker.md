@@ -4,6 +4,7 @@ title: Expense Tracker (记账)
 date: 2026-03-18
 tags: [ios, ocr, finance, swift]
 status: paused
+started: 2026-03-06
 ---
 
 <h2 data-lang="en">Why I Build This</h2>

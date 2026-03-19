@@ -5,6 +5,7 @@ date: 2026-03-18
 tags: [typescript, opencode, workflow, ai]
 status: in-progress
 github: https://github.com/JohnnyHua/pcp-skills
+started: 2026-02-21
 ---
 
 <h2 data-lang="en">Origin</h2>

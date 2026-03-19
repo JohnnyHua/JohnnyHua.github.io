@@ -5,6 +5,7 @@ date: 2026-03-17
 tags: [python, discord, ai, personal-tool]
 status: paused
 github: https://github.com/JohnnyHua/aibrain
+started: 2026-03-12
 ---
 
 <h2 data-lang="en">Goal</h2>
